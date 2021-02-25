@@ -2,6 +2,8 @@
 
 # Perhaps I am biting off more than I can chew with this project. My hope is to create program that allows you to input what you have and what you want and it computes the way to combine them that uses the least number of levels. Anvil costs, especially with enchantments are complex though, so who knows if I can make it work?
 
+import itertools as it
+
 
 # format for stuff:
 # dictionary with the following fields:
@@ -246,6 +248,18 @@ def combine_enchantments(target, sacrifice):
                 final_lvl = lvl
             res_enchants[enchant] = final_lvl
     return res_enchants
+
+def best_combination(l_items):
+    pass
+
+def best_way(target, l_sacris):
+    min_cost = 1000
+    min_tree = (,)
+    for order in it.permutations(l_sacris):
+        cost, tree = best_combination([target] + order)
+        if cost < min_cost:
+            min_tree = tree
+    return min_cost, min_tree
 
 example1_target = {
         "type": "sword",
